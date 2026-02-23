@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document</title>
+    <script>
+
+        var num = 100;
+
+        document.write("<table border='1' cellpadding='10'>");
+
+        for (let row = 1; row <= 10; row++) {
+
+            document.write("<tr>");
+
+            if (row % 2 != 0) {
+              
+                for (let col = 1; col <= 10; col++) {
+                    
+                    if (col % 2 != 0){
+                        document.write("<td bgcolor='red'>");
+                        document.write(num);
+                        num--;
+                        document.write("</td>");
+                    }else{
+                        document.write("<td bgcolor='yellow'>");
+                        document.write(num);
+                        num--;
+                        document.write("</td>");
+                    }
+                    
+                }
+            } else {
+             
+                let temp = num - 9;
+
+               for (let col = 1; col <= 10; col++) {
+                    if (col % 2 != 0){
+                        document.write("<td bgcolor='yellow'>");
+                        document.write(temp);
+                        temp++;
+                        document.write("</td>");
+                    }else{
+                        document.write("<td bgcolor='red'>");
+                        document.write(temp);
+                        temp++;
+                        document.write("</td>");
+                    }
+                    
+                }
+           
+                num = num - 10;
+            }
+
+            document.write("</tr>");
+        }
+
+        document.write("</table>");
+
+    </script>
+</head>
+<body>
+</body>
+</html>
