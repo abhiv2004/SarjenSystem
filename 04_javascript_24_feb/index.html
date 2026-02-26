@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+   
+</head>
+<body>
+
+    <div class="navbar">
+
+        <h1 class="logo">
+            <i class="fa-solid fa-mobile-screen-button"></i> Mobile
+        </h1>
+
+        <div class="nav-items">
+            <a href="#" class="nav-link active">Home</a>
+            <a href="" class="nav-link">Products</a>
+            <a href="" class="nav-link">About</a>
+            <a href="" class="nav-link">Contact</a>
+            <a href="#" class="nav-link">
+                <i class="fa-solid fa-cart-shopping"></i> Cart
+            </a>
+        </div>
+
+    </div>
+
+    <div class="main" id="productContainer"></div>
+
+    <div class="footer">
+
+        <div class="footer-col">
+            <h3>Mobile Store</h3>
+            <p>Your trusted online mobile shopping destination.</p>
+        </div>
+
+        <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Support</h4>
+            <ul>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Shipping</a></li>
+                <li><a href="#">Returns</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Follow Us</h4>
+            <ul class="social-links">
+                <li><a href="#"><i class="fa-brands fa-facebook"></i> Facebook</a></li>
+                <li><a href="#"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+                <li><a href="#"><i class="fa-brands fa-twitter"></i> Twitter</a></li>
+                <li><a href="#"><i class="fa-brands fa-youtube"></i> YouTube</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+   <div class="main-details" id="detailsSection">
+    
+    <div class="product-detail-card">
+        <img id="detailImage"/>
+
+        <a href="#" class="back-btn" onclick="closeDetails()">
+            <i class="fa-solid fa-xmark"></i>
+        </a>
+
+        <div class="details">
+            <h1 id="detailName"></h1>
+            <h3 id="detailPrice"></h3>
+
+            <p id="detailDesc"></p>
+
+            <button class="btn">
+                <i class="fa-solid fa-cart-shopping"></i>
+                Add to Cart
+            </button>
+
+            <button class="btn">
+                <i class="fa-solid fa-bolt"></i>
+                Buy Now
+            </button>
+        </div>
+
+    </div>
+    </div>
+
+    <script>
+
+        const products = [
+        {
+            id: 1,
+            name: "Samsung Galaxy S23",
+            price: 74999,
+            image: "images/samsung1.jfif",
+            description: "Latest Samsung flagship with powerful performance."
+        },
+        {
+            id: 2,
+            name: "iPhone 15 Pro Max",
+            price: 75000,
+            image: "images/iphone1.jfif",
+            description: "Apple's premium smartphone with advanced features."
+        },
+        {
+            id: 3,
+            name: "iPhone 14",
+            price: 65000,
+            image: "images/iphone2.jfif",
+            description: "Powerful iPhone with excellent camera and battery."
+        },
+        {
+            id: 4,
+            name: "Samsung Galaxy S23",
+            price: 74999,
+            image: "images/samsung1.jfif",
+            description: "Latest Samsung flagship with powerful performance."
+        },
+        {
+            id: 5,
+            name: "iPhone 15 Pro Max",
+            price: 75000,
+            image: "images/iphone1.jfif",
+            description: "Apple's premium smartphone with advanced features."
+        },
+        {
+            id: 6,
+            name: "iPhone 14",
+            price: 65000,
+            image: "images/iphone2.jfif",
+            description: "Powerful iPhone with excellent camera and battery."
+        },
+        {
+            id: 7,
+            name: "Samsung Galaxy S23",
+            price: 74999,
+            image: "images/samsung1.jfif",
+            description: "Latest Samsung flagship with powerful performance."
+        },
+        {
+            id: 8,
+            name: "iPhone 15 Pro Max",
+            price: 75000,
+            image: "images/iphone1.jfif",
+            description: "Apple's premium smartphone with advanced features."
+        },
+        
+    ];
+
+        const container = document.getElementById("productContainer");
+
+
+    for (i in products) {
+
+        container.innerHTML += `
+            <div class="product-card">
+                <img src="${products[i].image}">
+                <h2>${products[i].name}</h2>
+                <h4>₹${products[i].price}</h4>
+                <p>${products[i].description}</p>
+                <a href="#" class="card-btn" onclick="showDetails(${i})">
+                    Details <i class="fa-solid fa-eye"></i>
+                </a>
+            </div>
+        `;
+    }
+
+
+    function showDetails(index) {
+
+        document.getElementById("detailImage").src = products[index].image;
+        document.getElementById("detailName").innerText = products[index].name;
+        document.getElementById("detailPrice").innerText = "Price : ₹" + products[index].price;
+        document.getElementById("detailDesc").innerText = products[index].description;
+
+        document.getElementById("detailsSection").style.display = "flex";
+    }
+
+
+    function closeDetails() {
+        document.getElementById("detailsSection").style.display = "none";
+    }
+
+    </script>
+
+
+
+
+    
+   
+
+
+</body>
+</html>
