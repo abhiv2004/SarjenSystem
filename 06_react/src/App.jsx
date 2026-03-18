@@ -2,8 +2,10 @@ import { Routes, Route, Link } from "react-router-dom";
 import {Home,About,Contact} from "./Home.jsx";
 import LifeCycle from "./LifeCycle.jsx";
 import StateDemo from "./StateDemo.jsx";
-import StateLocalDemo from "./StateLocalDemo.jsx";
+import Counter from "./Counter.jsx";
 import StateDemo2 from "./StateDemo2.jsx";
+import Addition from "./Addition.jsx";
+import SumUsingObject from "./SumUsingObject.jsx";
 
 function App() {
   return (
@@ -16,7 +18,9 @@ function App() {
         <Link to="/lifecycle">LifeCycle</Link> | {" "}
         <Link to="/state1">StateDemo 1</Link> | {" "}
         <Link to="/state2">StateDemo 2</Link> | {" "}
-        <Link to="/statelocal">StateLocal </Link> | {" "}
+        <Link to="/counter">Counter </Link> | {" "}
+        <Link to="/addition">Sum with validation </Link> | {" "}
+        <Link to="/sum">Sum using Object </Link> | {" "}
       </nav>
 
       {/* Routes */}
@@ -27,7 +31,9 @@ function App() {
         <Route path="/lifecycle" element={<LifeCycle />} />
         <Route path="/state1" element={<StateDemo />} />
         <Route path="/state2" element={<StateDemo2 />} />
-        <Route path="/statelocal" element={<StateLocalDemo />} />
+        <Route path="/counter" element={<Counter />} />
+        <Route path="/addition" element={<Addition />} />
+        <Route path="/sum" element={<SumUsingObject />} />
       </Routes>
     </>
   );
