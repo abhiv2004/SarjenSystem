@@ -8,37 +8,57 @@ export default class Addition extends Component {
       num1: '',
       num2: '',
       result: null,
-      error: ''
+      errors: {
+        num1: '',
+        num2: ''
+      }
     }
   }
 
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
-      error: ''
+      errors: {
+        ...this.state.errors,
+        [e.target.name]: ''
+      }
     })
   }
 
-  handleSum = () => {
+
+  validate = () => {
     const { num1, num2 } = this.state
+    let errors = {}
+    let isValid = true
 
-    // Validation
-    if (num1 === '' || num2 === '') {
-      this.setState({ error: 'Both fields are required', result: null })
-      return
+    if (num1 === '') {
+      errors.num1 = 'Enter No1'
+      isValid = false
+    } else if (isNaN(num1)) {
+      errors.num1 = 'Enter valid number'
+      isValid = false
     }
 
-    if (isNaN(num1) || isNaN(num2)) {
-      this.setState({ error: 'Please enter valid numbers', result: null })
-      return
+    if (num2 === '') {
+      errors.num2 = 'Enter No2'
+      isValid = false
+    } else if (isNaN(num2)) {
+      errors.num2 = 'Enter valid number'
+      isValid = false
     }
 
-    // Convert to numbers and calculate sum
+    this.setState({ errors })
+    return isValid
+  }
+
+  handleSum = () => {
+    if (!this.validate()) return
+
+    const { num1, num2 } = this.state
     const sum = parseFloat(num1) + parseFloat(num2)
 
     this.setState({
-      result: sum,
-      error: ''
+      result: sum
     })
   }
 
@@ -46,7 +66,7 @@ export default class Addition extends Component {
     return (
       <div>
         <h2>Addition with Validation</h2>
-
+        No1 : 
         <input
           type="text"
           name="num1"
@@ -54,9 +74,13 @@ export default class Addition extends Component {
           value={this.state.num1}
           onChange={this.handleChange}
         />
+        {this.state.errors.num1 && (
+          <p style={{ color: 'red' }}>{this.state.errors.num1}</p>
+        )}
 
-        <br /><br />
-
+        <br />
+        <br />
+        No2 :
         <input
           type="text"
           name="num2"
@@ -64,16 +88,15 @@ export default class Addition extends Component {
           value={this.state.num2}
           onChange={this.handleChange}
         />
+        {this.state.errors.num2 && (
+          <p style={{ color: 'red' }}>{this.state.errors.num2}</p>
+        )}
 
         <br /><br />
 
         <button onClick={this.handleSum}>Add</button>
 
         <br /><br />
-
-        {this.state.error && (
-          <p style={{ color: 'red' }}>{this.state.error}</p>
-        )}
 
         {this.state.result !== null && (
           <p>Result: {this.state.result}</p>

@@ -35,7 +35,7 @@ export default class LifeCycle extends Component {
 
     return (
       <>
-        <h1>Lifecycle Demo</h1>
+        <h1>Lifecycle Demo</h1><span style={{color:"red", fontWeight:"bold"}}>Note : Open Console</span>
         <h2>Count: {this.state.count}</h2>
 
         <button onClick={this.updateState}>

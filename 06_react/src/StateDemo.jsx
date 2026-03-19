@@ -15,7 +15,7 @@ export default class StateDemo extends Component {
            { counter : this.state.counter + 1 ,msg :" "} 
         ) : 
         this.setState(
-           { msg : "we can not increased grater than 5 ." } 
+           { msg : "we can not increased grater than 10 ." } 
         ) 
     }
 
@@ -32,7 +32,7 @@ export default class StateDemo extends Component {
   render() {
     return (
       <div>
-         <p>{this.state.counter}</p>
+         <p style={{fontWeight:"bold"}}>Count : {this.state.counter}</p>
          <input type='button' value="increase" onClick={this.increased.bind(this)}  />
          <input type='button' value="decrease" onClick={this.decreased.bind(this)}  />
          <p>{this.state.msg}</p>

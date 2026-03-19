@@ -17,14 +17,11 @@ export default class Counter extends Component {
     if (savedCounter !== null) {
       this.setState({ counter: parseInt(savedCounter) })
     }
-
-    console.log("Loaded from localStorage")
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.counter !== this.state.counter) {
       localStorage.setItem("counter", this.state.counter)
-      console.log("Saved to localStorage")
     }
   }
 
@@ -54,6 +51,13 @@ export default class Counter extends Component {
     }
   }
 
+  reset = () => {
+    this.setState({
+      counter: 0,
+      msg: ""
+    })
+  }
+
   render() {
     return (
       <div>
@@ -61,8 +65,9 @@ export default class Counter extends Component {
 
         <button onClick={this.increased}>Increase</button>
         <button onClick={this.decreased}>Decrease</button>
+        <button onClick={this.reset}>Reset</button>
 
-        <p>{this.state.msg}</p>
+        <p style={{ color: "red" }}>{this.state.msg}</p>
       </div>
     )
   }

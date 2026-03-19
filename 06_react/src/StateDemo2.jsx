@@ -18,7 +18,8 @@ export default class StateDemo2 extends Component {
     this.setState({
       userinfo: {
         ...this.state.userinfo, 
-        name: "Abhishek Varma"  
+        name: "Abhishek Varma" ,
+        company : "Sarjen System" 
       }
     })
   }

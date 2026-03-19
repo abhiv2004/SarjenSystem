@@ -28,6 +28,4 @@ export default class EventDemo extends Component {
   }
 }
 
-// imrc 
-// rcc
-// rconst
+
